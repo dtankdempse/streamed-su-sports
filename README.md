@@ -1,6 +1,4 @@
-**Important:** Due to TinyURL’s use of Cloudflare, the playlist short links have been updated from TinyURL to Bit.ly. The old TinyURL links will continue to work once the protective mode is lifted, but it's recommended to switch to the new Bit.ly links.
-
-# Streamed su Sports Playlists
+# Streamed Su Sports Playlists
 
 Streamed su is a platform that offers live sports streaming on their website. Users can stream and watch sports directly through their browser without the need for an account or subscription.
 
@@ -8,46 +6,45 @@ For added flexibility, this repository provides an M3U playlist featuring Stream
 
 You can view the latest events added to the playlist [here](https://github.com/dtankdempse/streamed-su-sports/blob/main/events.txt).
 
-## Playlist Formats:
+---
 
-There are four different playlist formats available, each tailored for specific applications or media players.
+## M3U-Playlist-Proxy (MPP) Required!
 
-- **playlist.m3u8:**
-  A standard M3U playlist. If you're using this playlist, make sure your IPTV application allows the setting of a custom `Referer` header. The `Referer` must be set to `https://embedme.top/` in order to access the streams. Failure to set the `Referer` will result in a 403 error when attempting to stream.
-  
-  **Playlist:** `https://bit.ly/su-m3u1`  
-  **EPG URL:** `https://bit.ly/su-epg`  
-  **Referer:** `https://embedme.top/`    
-
-- **tivimate_playlist.m3u8:**
-  This playlist is specifically formatted for use with TiviMate. To use it, simply load the URL provided in this repository into Tivimate as an "M3U Playlist." No additional setup is needed as Tivimate handles the required headers for playback.
-  
-   **Playlist:** `https://bit.ly/su-m3u2`  
-   **EPG URL:** `https://bit.ly/su-epg`  
-   **Referer:** `Included` 
-
-- **kodi_playlist.m3u8:**
-	This playlist is designed for Kodi, utilizing `#KODIPROP` properties to handle the necessary stream settings, including the `Referer` header. It is optimized for Kodi's PVR IPTV Simple Client, ensuring compatibility with your Kodi setup. This format is primarily designed for Kodi, but it may or may not be compatible with other applications.
-	
-	**Playlist:** `https://bit.ly/su-m3u3`  
-	**EPG URL:** `https://bit.ly/su-epg`  
-	**Referer:** `Included` 
-
-- **vlc_playlist.m3u8:**
-  Optimized for VLC Media Player. This playlist uses VLC-specific formatting to ensure streams play correctly, including setting the necessary `http-referrer` via `#EXTVLCOPT`. This format is primarily designed for VLC, but it may or may not be compatible with other applications.
-  
-  	**Playlist:** `https://bit.ly/su-m3u4`  
-	**EPG URL:** `https://bit.ly/su-epg`  
-	**Referer:** `Included`
+Due to recent updates by Streamed Su Sports, the M3U-Playlist-Proxy (MPP) is now required to stream this playlist. To get started, check out the video guide on setting up and downloading the M3U-Playlist-Proxy, available at this [GitHub link](https://github.com/dtankdempse/m3u-playlist-proxy). If you’re already using the MPP proxy, please update to the latest version by pulling the new Docker image, downloading the updated zip, or redeploying to Vercel to ensure you have the latest changes.
 
 
-If none of these playlists work with your IPTV application, you can try using the [m3u-playlist-proxy](https://github.com/dtankdempse/m3u-playlist-proxy). This proxy acts as a middle layer to help resolve potential issues with playing the playlists, especially if your IPTV app doesn't support setting a referer header.
+- **Playlist.m3u8**  
+  This is a standard M3U playlist. To use it, load the Playlist URL into MPP and ensure both the `Referer` and `User-Agent` headers are correctly configured. Set the `Referer` to `https://embedme.top/` and use a compatible `User-Agent` string to enable stream access. Without these headers, streaming attempts will result in a 403 error.
 
-## Usage Instructions:
 
-1. Choose the playlist format that suits your application or media player.
-2. Add the playlist URL to your IPTV application.
-3. Ensure that your application supports the required settings, such as setting the `Referer` header for streams to play.
+  - **Playlist URL:** [https://bit.ly/su-m3u1](https://bit.ly/su-m3u1)
+  - **EPG URL:** [https://bit.ly/su-epg](https://bit.ly/su-epg)
+  - **Referer:** `https://embedme.top/`
+  - **User-Agent:** `Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:132.0) Gecko/20100101 Firefox/132.0`  
+    (Alternatively, you may use your own User-Agent string.)
+
+---
+
+## Important Information for VLC Users:
+
+VLC may not be the ideal player for this site unless you enable the 'Play and Stop' option in the preferences. Here's why: if VLC continuously attempts to load streams that fail, your IP could be rate-limited or even temporarily banned. To prevent this, follow these steps:
+
+**On Desktop (Windows, macOS, Linux):**
+
+- Open VLC Media Player.
+- Go to the Tools menu and select Preferences (or press Ctrl + P).
+- At the bottom of the Preferences window, select All under Show settings to switch to advanced mode.
+- In the left sidebar, navigate to Playlist.
+- In the Playlist settings, locate the option 'Play and Stop'.
+- Check the box next to Play and Stop.
+- Click Save to apply the changes.
+- Restart VLC to ensure the settings take effect.
+
+**What Does "Play and Stop" Do?**
+
+When enabled, VLC will stop playback entirely when the current item finishes or fails, rather than jumping to the next item in the playlist. This is exactly what you need to prevent it from trying to play the next stream when one fails.
+
+---
 
 ## Playlist and EPG Syncing:
 
@@ -57,7 +54,25 @@ The playlist and EPG data are updated every 4 hours. Since streaming data can ch
 
 Basketball, Football, American Football, Hockey, Baseball, Motor Sports, Fight (UFC, Boxing), Tennis, Rugby, Golf, Billiards, AFL, Darts, Cricket, Other
 
+---
+
+<details>
+<summary>Click to read Disclaimer.</summary>
+
 ## Disclaimer:
 
-This repository has no control over the streams, links, or the legality of the content provided by Streamed.su. It is the end user's responsibility to ensure the legal use of these streams, and we strongly recommend verifying that the content complies with the laws and regulations of your country before use.
+This repository has no control over the streams, links, or the legality of the content provided by Streamed.su. It is the end user's responsibility to ensure the legal use of these playlists, and we strongly recommend verifying that the content complies with the laws and regulations of your country before use.
+</details>
 
+<details>
+<summary>Click to read DMCA Notice.</summary>
+  
+## DMCA Notice:
+
+This repository does not host or store any video files. It simply organizes publicly accessible web links, which can be accessed through a web browser, into an M3U-formatted playlist. To the best of our knowledge, the content was intentionally made publicly available by the copyright holders or with their permission and consent granted to these websites to stream and share the content they provide.
+
+Please note that linking does not directly infringe copyright, as no copies are made on this repository or its servers. Therefore, sending a DMCA notice to GitHub or the maintainers of this repository is not a valid course of action. To remove the content from the web, you should contact the website or hosting provider actually hosting the material.
+
+If you still believe a link infringes on your rights, you can request its removal by opening an [issue](https://github.com/dtankdempse/streamed-su-sports/issues) or submitting a [pull request](https://github.com/dtankdempse/streamed-su-sports/pulls). Be aware, however, that removing a link here will not affect the content hosted on the external websites, as this repository has no control over the files or the content being provided.
+
+</details>
